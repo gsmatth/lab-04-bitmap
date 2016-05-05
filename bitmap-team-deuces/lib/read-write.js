@@ -14,5 +14,4 @@ exports.writeFile = function(buffer){
     if(err) throw err;
     console.log('created file named transformed.bmp');
   });
-
 };

@@ -2,7 +2,8 @@
 
 module.exports = (function() {
   const invert = function(bitmapObj, callback) {
-    return callback(bitmapObj);
+    let transformedBitmap;
+    return callback(transformedBitmap);
   };
 
   return {

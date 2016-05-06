@@ -13,7 +13,7 @@ module.exports = (function() {
       // let newSmallerBuffer = new Buffer(b.length);
       for (let color of b.entries()) {
         color[1] = 255 - color[1];
-        b[color[0]];
+        b[color[0]] = color[1];
 
         console.log('color', color);
         // newSmallerBuffer.writeInt8(color, smallerIndex);

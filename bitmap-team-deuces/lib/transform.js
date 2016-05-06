@@ -2,17 +2,27 @@
 
 module.exports = (function() {
   const invert = function(colorTableBuf, callback) {
+    console.log('starting invert');
+    console.log(colorTableBuf.length);
     let prevIndex = 0;
-    for (var i = 4; i < colorTableBuf.length; i += 4){
+    //let newColorTable = new Buffer(colorTableBuf.length);
+    for (let i = 4; i < 9; i += 4){
       const b = colorTableBuf.slice(prevIndex, i);
-      console.log('orig b', b);
-      for (var color in b.values()) {
-        color = 255 - color;
+      console.log('b', b);
+      // let smallerIndex = 0;
+      // let newSmallerBuffer = new Buffer(b.length);
+      for (let color of b.entries()) {
+        color[1] = 255 - color[1];
+        b[color[0]];
+
+        console.log('color', color);
+        // newSmallerBuffer.writeInt8(color, smallerIndex);
+        // smallerIndex++;
       }
-      console.log('new b', b);
+      // newColorTable.write32IntLE();
       prevIndex = i;
     }
-    return callback(colorTableBuf);
+    callback(colorTableBuf);
   };
 
   return {

@@ -2,10 +2,16 @@
 
 const fs = require('fs');
 
-fs.readFile(__dirname + '/../img/bitmap1.bmp', function(err, data) {
-  console.log(data, 'utf-8');
-});
-// 
-// function decode(){
-//
-// }
+exports.readFile = function(){
+  fs.readFile(__dirname + '/../img/bitmap1.bmp', function(err, data) {
+    console.log(data);
+  });
+};
+
+
+exports.writeFile = function(buffer){
+  fs.writeFile(__dirname + '/../img/transformed.bmp',buffer,function(err){
+    if(err) throw err;
+    console.log('created file named transformed.bmp');
+  });
+};

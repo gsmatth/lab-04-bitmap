@@ -1,6 +1,6 @@
 'use strict';
 
-const fs = require('fs');
+// const fs = require('fs');
 const readFile = require(__dirname + '/lib/readwrite').readFile;
 const writeFile = require(__dirname + '/lib/readwrite').writeFile;
 const parse = require(__dirname + '/lib/parse');
@@ -10,7 +10,8 @@ var path2 = __dirname + '/img/bitmap2.bmp';
 
 function transformBitmap(path1, path2){
   readFile(parse.parse, function(parsedObject){
-    transform(parsedObject.colorTable, function(err, newColorTbl){
+    transform(parsedObject.colorTable, function(err){
+      if (err) throw err;
       parsedObject.colorTable;
       writeFile(path2, parsedObject.toBuffer());
     });

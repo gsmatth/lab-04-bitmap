@@ -1,7 +1,7 @@
 'use strict';
 
 const fs = require('fs');
-const parse = require(__dirname + '/parse');
+// const parse = require(__dirname + '/parse');
 
 exports.readFile = function(parse, callback){
   fs.readFile(__dirname + '/../img/bitmap1.bmp', function(err, data) {

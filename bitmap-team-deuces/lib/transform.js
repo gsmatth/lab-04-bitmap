@@ -1,26 +1,19 @@
 'use strict';
-const parse = require(__dirname + '/parse');
 
-exports.invertColorTable = function(colorTable, callback) {
-  console.log('stepped into invertColorTable in transform.js');
+module.exports = function(colorTable, callback) {
   let prevIndex = 0;
   const increment = 4;
-  console.log('increment shoud be 4:  ' + increment);
+
   if (!Buffer.isBuffer(colorTable)) {
-    return (new Error('no buffer provided'));
+    return callback(new Error('no buffer provided'));
   }
 
   for (let i = increment; i < colorTable.length + 1; i += increment){
-    const b = colorTable.slice(prevIndex, i);
-    for (let color of b.entries()) {
-      color[1] = 255 - color[1];
-      b[color[0]] = color[1];
+    const buf = colorTable.slice(prevIndex, i);
+    for (var g =0; g < buf.length; g++){
+      buf[g] = 255 - buf[g];
     }
     prevIndex = i;
   }
   callback(null, colorTable);
-
-  return {
-    invert: invert
-  };
 };

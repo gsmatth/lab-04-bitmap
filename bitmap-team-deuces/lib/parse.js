@@ -1,37 +1,20 @@
 'use strict';
-const transform = require(__dirname  +'/transform').invertColorTable;
 
-function Bitmap(){
-  this.headerField = '';
-  this.fileSize = '';
-  this.imgStartOffset = '';
-  this.colorTable = '';
-  this.pixelArray = [];
+function Bitmap(buffer){
+  this.originalBuffer = buffer;
+  this.headerField = this.originalBuffer.slice(0, 2).toString();//BM
+  this.fileSize = this.originalBuffer.readUInt32LE(2);//bytes
+  this.imgStartOffset =  this.originalBuffer.slice(10, 14).readUIntLE(0, 4);
+  this.colorTable =  this.originalBuffer.slice(54, 1071);//this.originalBuffer
+  this.pixelArray =  buffer.slice(1071, 11078).toString('hex');//array
 }
 
-var firstBitmap = new Bitmap();
+Bitmap.prototype.toBuffer =function(){
+  return this.originalBuffer;
+};
+
 
 exports.parse = function(buffer){
-  console.log('stepped in to parse()');
-  firstBitmap.headerField = buffer.slice(0, 2).toString();//BM
-  firstBitmap.fileSize = buffer.readIntLE(2, 6);//bytes
-  firstBitmap.imgStartOffset =  buffer.slice(10, 14).readUIntLE(0, 4);
-  firstBitmap.colorTable =  buffer.slice(54, 1071).toString('hex');//buffer
-  firstBitmap.pixelArray =  buffer.slice(1071, 11078).toString('hex');//array
-
-  console.log('headerField is: ' + firstBitmap.headerField);
-  console.log('file size is: ' + firstBitmap.fileSize);
-  console.log('color table is ' + firstBitmap.colorTable);
-  console.log('pixel array is ' + firstBitmap.pixelArray);
+  let firstBitmap = new Bitmap(buffer);
+  return firstBitmap;
 };
-
-//get new color table
-Bitmap.prototype.newColorTable = function(colorTable, callback){
-  this.newTable = callback(colorTable);
-  console.log('new color table: \n' + this.newTable)
-  console.log(firstBitmap);
-};
-
-firstBitmap.newColorTable(firstBitmap.colorTable, transform);
-
-//call write () on new object

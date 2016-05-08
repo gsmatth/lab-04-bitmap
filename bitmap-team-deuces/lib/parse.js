@@ -32,7 +32,7 @@ Bitmap.prototype.newColorTable = function(colorTable, callback){
 
 // Bitmap.prototype.newObject = function(){console.log('create new object function');
 
-Bitmap.prototype.newColorTable(firstBitmap.colorTable, transform);
+firstBitmap.newColorTable(this.colorTable, transform);
 
   //   const invert = function(colorTable, callback) {
   //     console.log('value of callback in newColorTable ' + callback);

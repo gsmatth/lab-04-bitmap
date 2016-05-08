@@ -1,11 +1,13 @@
 'use strict';
 
 const fs = require('fs');
+const parse = require(__dirname + '/parse');
 //__dirname + '/../img/bitmap1.bmp'
 
-exports.readFile = function(path1){
-  fs.readFile(path1, function(err, data) {
-    console.log(data);
+exports.readFile = function(parse){
+  console.log('stepped in to readfile()');
+  fs.readFile(__dirname + '/../img/bitmap1.bmp', function(err, data) {
+    parse(data);
   });
 };
 

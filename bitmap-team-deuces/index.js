@@ -2,19 +2,17 @@
 
 const readFile = require(__dirname + '/lib/readwrite').readFile;
 const writeFile = require(__dirname + '/lib/readwrite').writeFile;
-const parse = require(__dirname + '/lib/parse');
 const transform = require(__dirname + '/lib/transform');
-var path1 = __dirname + '/../img/bitmap1.bmp';
-var path2 = __dirname + '/img/bitmap2.bmp';
+var input = __dirname + '/img/bitmap1.bmp';
+var output = __dirname + '/img/bitmap2.bmp';
 
-function transformBitmap(path1, path2){
-  readFile(parse.parse, function(parsedObject){
+function transformBitmap(input, output){
+  readFile(input, function(parsedObject){
     transform(parsedObject.colorTable, function(err){
       if(err) {throw err;}
-      parsedObject.colorTable;
-      writeFile(path2, parsedObject.toBuffer());
+      writeFile(output, parsedObject.toBuffer());
     });
   });
 }
 
-transformBitmap(path1, path2);
+transformBitmap(input, output);

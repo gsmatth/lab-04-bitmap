@@ -25,44 +25,12 @@ exports.parse = function(buffer){
   console.log('pixel array is ' + firstBitmap.pixelArray);
 };
 
-//build prototype and get new colortable
+//get new color table
 Bitmap.prototype.newColorTable = function(colorTable, callback){
   callback(colorTable);
 };
 
-// Bitmap.prototype.newObject = function(){console.log('create new object function');
-
 firstBitmap.newColorTable(this.colorTable, transform);
 
-  //   const invert = function(colorTable, callback) {
-  //     console.log('value of callback in newColorTable ' + callback);
-  //     let prevIndex = 0;
-  //     const increment = 4;
-  //
-  //     if (!Buffer.isBuffer(colorTable)) {
-  //       return transform(new Error('no buffer provided'));
-  //     }
-  //
-  //     for (let i = increment; i < colorTable.length + 1; i += increment){
-  //       const b = colorTable.slice(prevIndex, i);
-  //       for (let color of b.entries()) {
-  //         color[1] = 255 - color[1];
-  //         b[color[0]] = color[1];
-  //       }
-  //       prevIndex = i;
-  //     }
-  //     callback(null, colorTable);
-  //   };
-  // };
-  //
-  //   return {
-  //     invert: invert
-  //
-  //   };
-  //
-  // };
-//build () to build new object with new colortable
-// Bitmap.prototype.newObject = function(){
-//
-// };
+
 //call write () on new object

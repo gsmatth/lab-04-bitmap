@@ -27,10 +27,11 @@ exports.parse = function(buffer){
 
 //get new color table
 Bitmap.prototype.newColorTable = function(colorTable, callback){
-  callback(colorTable);
+  this.newTable = callback(colorTable);
+  console.log('new color table: \n' + this.newTable)
+  console.log(firstBitmap);
 };
 
-firstBitmap.newColorTable(this.colorTable, transform);
-
+firstBitmap.newColorTable(firstBitmap.colorTable, transform);
 
 //call write () on new object

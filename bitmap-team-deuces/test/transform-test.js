@@ -8,7 +8,7 @@ describe('transform module', () => {
     it('should invert colors', (done) => {
       const colorTable = new Buffer([100, 45, 75, 8, 40, 89, 170, 0]);
       const targetColorTable = new Buffer([155, 210, 180, 247, 215, 166, 85, 255]);
-      transform.invert(colorTable, (err, newBuff) => {
+      transform(colorTable, (err, newBuff) => {
         if (err) throw err;
         expect(err).to.eql(null);
         expect(newBuff).to.eql(targetColorTable);
@@ -17,7 +17,7 @@ describe('transform module', () => {
     });
 
     it('should throw error if no buffer provided', (done) => {
-      transform.invert('string', (err) => {
+      transform('string', (err) => {
         expect(err).to.be.an('error');
         done();
       });

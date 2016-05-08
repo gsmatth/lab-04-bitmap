@@ -1,6 +1,5 @@
 'use strict';
 
-const fs = require('fs');
 const readFile = require(__dirname + '/lib/readwrite').readFile;
 const writeFile = require(__dirname + '/lib/readwrite').writeFile;
 const parse = require(__dirname + '/lib/parse');

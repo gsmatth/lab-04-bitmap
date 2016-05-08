@@ -10,7 +10,8 @@ var path2 = __dirname + '/img/bitmap2.bmp';
 
 function transformBitmap(path1, path2){
   readFile(parse.parse, function(parsedObject){
-    transform(parsedObject.colorTable, function(err, newColorTbl){
+    transform(parsedObject.colorTable, function(err){
+      if(err) {throw err;}
       parsedObject.colorTable;
       writeFile(path2, parsedObject.toBuffer());
     });

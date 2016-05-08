@@ -1,7 +1,7 @@
 'use strict';
 
 function Bitmap(buffer){
-  console.log('is buffer?', Buffer.isBuffer(buffer));
+  // console.log('is buffer?', Buffer.isBuffer(buffer));
   this.originalBuffer = buffer;
   this.headerField = this.originalBuffer.slice(0, 2).toString();//BM
   this.fileSize = this.originalBuffer.readUInt32LE(2);//bytes

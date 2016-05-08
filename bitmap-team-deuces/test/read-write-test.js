@@ -1,8 +1,8 @@
-'use strict';
-const fs = require('fs');
-const expect = require('chai').expect;
-const readWrite = require('../lib/readwrite.js');
-
+// 'use strict';
+// const fs = require('fs');
+// const expect = require('chai').expect;
+// const readWrite = require('../lib/readwrite.js');
+//
 
 
 // //Buff variable is anything//

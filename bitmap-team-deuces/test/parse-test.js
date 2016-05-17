@@ -1,7 +1,7 @@
 'use strict';
 
 const expect = require('chai').expect;
-const parse = require('../lib/parse');
+
 const readWriteBitMap = require('../lib/readwrite.js');
 
 describe('testing parse.js', () => {
